@@ -1,0 +1,11 @@
+
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "ls"
+
+[[session]]
+name = "Relesys Native"
+path = "~/source/Relesys Native/"
+startup_command = "nvim ."
+

@@ -8,6 +8,14 @@
       "rev": "2b604b2e8e662c03b716436f6ffebcb19663e66a",
       "src": "https://github.com/aznhe21/actions-preview.nvim"
     },
+    "easy-dotnet.nvim": {
+      "rev": "db34bd56ea682fcb0efc4a8896f9702ee22b6b22",
+      "src": "https://github.com/GustavEikaas/easy-dotnet.nvim"
+    },
+    "kanagawa.nvim": {
+      "rev": "8ad3b4cdcc804b332c32db8f9743667e1bb82b99",
+      "src": "https://github.com/rebelot/kanagawa.nvim"
+    },
     "mason.nvim": {
       "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
       "src": "https://github.com/mason-org/mason.nvim"
@@ -52,6 +60,10 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "snacks.nvim": {
+      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "src": "https://github.com/folke/snacks.nvim"
     },
     "telescope-env.nvim": {
       "rev": "00a703cc7b713cdda0a981d88fddf3ce25502af5",

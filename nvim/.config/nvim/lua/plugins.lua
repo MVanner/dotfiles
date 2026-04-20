@@ -15,11 +15,84 @@ vim.pack.add({
 	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
 	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text" },
 	{ src = "https://github.com/julianolf/nvim-dap-lldb" },
-	{ src = "https://github.com/nvim-neotest/nvim-nio" }
+	{ src = "https://github.com/nvim-neotest/nvim-nio" },
+	{ src = "https://github.com/folke/snacks.nvim" },
+	{ src = "https://github.com/GustavEikaas/easy-dotnet.nvim" },
+	{ src = "https://github.com/rebelot/kanagawa.nvim" }
 })
 
+require("snacks").setup()
+require("easy-dotnet").setup(
+	opts = {
+		server = {
+        ---@type nil | "Off" | "Critical" | "Error" | "Warning" | "Information" | "Verbose" | "All"
+        log_level = "Off",
+        use_visual_studio = false,
+      },
+      test_runner = {
+        enable_buffer_test_execution = true,
+        viewmode = "float",
+        noBuild = false,
+      },
+      projx_lsp = {
+        enabled = true,
+      },
+      notifications = {
+        handler = false,
+      },
+      debugger = {
+        bin_path = vim.fs.joinpath(vim.fn.stdpath "data", "mason/bin/netcoredbg.cmd"),
+        console = "externalTerminal",
+        -- bin_path = "C:/Program Files (x86)/netcoredbg/netcoredbg.exe"
+      },
+      auto_bootstrap_namespace = {
+        type = "file_scoped",
+        enabled = true,
+      },
+      terminal = function(path, action, args, ctx)
+        local commands = {
+          run = function()
+            return string.format("%s %s", ctx.cmd, args)
+          end,
+          test = function()
+            return string.format("%s %s", ctx.cmd, args)
+          end,
+          restore = function()
+            return string.format("%s %s", ctx.cmd, args)
+          end,
+          build = function()
+            return string.format("%s %s", ctx.cmd, args)
+          end,
+          watch = function()
+            return string.format("dotnet watch --project %s %s", path, args)
+          end,
+        }
+
+        local command = commands[action]() .. "\r"
+        require("toggleterm").exec(command, nil, nil, nil, "float")
+      end
+		})
+
+local dotnet = require "easy-dotnet"
+
+vim.api.nvim_create_user_command("Secrets", function()
+	dotnet.secrets()
+end, {})
+
+vim.keymap.set("n", "<A-t>", function()
+	vim.cmd "Dotnet testrunner"
+end, { nowait = true })
+
+vim.keymap.set("n", "<C-p>", function()
+	vim.cmd "Dotnet debug profile default"
+end, { nowait = true })
+
+vim.keymap.set("n", "<C-b>", function()
+	dotnet.build_default_quickfix()
+end, { nowait = true })
+
+
 require "vague".setup({ transparent = true })
-local default_color = "vague"
 
 require("dap-lldb").setup()
 local dap, dapui = require("dap"), require("dapui")
@@ -259,4 +332,4 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 
-vim.cmd('colorscheme ' .. default_color)
+vim.cmd('colorscheme kanagawa')
