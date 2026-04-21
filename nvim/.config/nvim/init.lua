@@ -1,15 +1,23 @@
-vim.opt.winborder = "rounded"
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.showtabline = 2
-vim.opt.signcolumn = "yes"
-vim.opt.wrap = false
-vim.opt.cursorcolumn = false
-vim.opt.ignorecase = true
-vim.opt.smartindent = true
-vim.opt.termguicolors = true
-vim.opt.undofile = true
-vim.opt.number = true
-
-require('plugins')
+-- init.lua
+require('bootstrap')
+require('options')
 require('keymaps')
+
+-- UI
+require('plugins.catppuccin')
+require('plugins.lualine')
+
+-- Editor
+require('plugins.treesitter')
+require('plugins.fzf')
+require('plugins.oil')
+require('plugins.blink')
+require('plugins.vim-tmux-navigator')
+
+-- Language
+require('lsp')
+require('plugins.conform')
+
+-- Debug + Test
+require('plugins.dap')
+require('plugins.neotest')
