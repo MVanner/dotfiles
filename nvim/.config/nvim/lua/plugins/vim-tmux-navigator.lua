@@ -1,3 +1,0 @@
--- lua/plugins/vim-tmux-navigator.lua
--- Seamless navigation between tmux panes and neovim splits via C-h/j/k/l
--- No setup() needed — plugin auto-configures keymaps on load
