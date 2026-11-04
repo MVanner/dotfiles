@@ -17,3 +17,11 @@ export ICON_BATTERY_25=""  # U+F243
 export ICON_BATTERY_0=""  # U+F244
 export ICON_CHARGING=""  # U+F0E7
 export ICON_CHEVRON=""  # U+F054
+
+# Apple menu
+export ICON_SETTINGS=""  # U+F013
+export ICON_LOCK=""  # U+F023
+export ICON_SLEEP=""  # U+F186
+export ICON_RESTART=""  # U+F021
+export ICON_POWER=""  # U+F011
+export ICON_LOGOUT=""  # U+F08B
