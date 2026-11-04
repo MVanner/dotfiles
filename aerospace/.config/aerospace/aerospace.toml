@@ -75,9 +75,8 @@ on-mode-changed = []
     inner.vertical =   0
     outer.left =       0
     outer.bottom =     0
-    # Main display: windows already start below the menu bar (where SketchyBar sits).
-    # Other displays: no menu bar, so reserve room for SketchyBar (height 36).
-    outer.top =        [{ monitor.main = 0 }, 36]
+    # macOS menu bar is auto-hidden, so reserve room for SketchyBar (height 36) on every display.
+    outer.top =        36
     outer.right =      0
 
 # 'main' binding mode declaration
