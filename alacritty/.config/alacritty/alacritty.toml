@@ -11,6 +11,8 @@ args = ["new-session", "-A", "-s", "main"]
 [window]
 decorations = "buttonless"
 dynamic_padding = false
+opacity = 0.8
+blur = false
 
 [window.padding]
 x = 25
