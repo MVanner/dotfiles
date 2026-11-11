@@ -30,4 +30,5 @@ fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
 export PATH="/Applications/CMake.app/Contents/bin:$PATH"
