@@ -6,17 +6,13 @@ local lualine = require('lualine')
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = '#202328',
-  fg       = '#bbc2cf',
-  yellow   = '#ECBE7B',
-  cyan     = '#008080',
-  darkblue = '#081633',
-  green    = '#98be65',
-  orange   = '#FF8800',
-  violet   = '#a9a1e1',
-  magenta  = '#c678dd',
-  blue     = '#51afef',
-  red      = '#ec5f67',
+  bg     = 'NONE',    -- transparent, matches Alacritty opacity
+  fg     = '#8a8a8a',
+  dim    = '#6c6c6c',
+  mid    = '#a8a8a8',
+  bright = '#d0d0d0',
+  white  = '#ffffff',
+  red    = '#d70000', -- single accent, same as tmux
 }
 
 local conditions = {
@@ -82,7 +78,7 @@ ins_left {
   function()
     return '▊'
   end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
+  color = { fg = colors.dim }, -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
@@ -95,23 +91,23 @@ ins_left {
     -- auto change color according to neovims mode
     local mode_color = {
       n = colors.red,
-      i = colors.green,
-      v = colors.blue,
-      [' '] = colors.blue,
-      V = colors.blue,
-      c = colors.magenta,
+      i = colors.white,
+      v = colors.bright,
+      [' '] = colors.bright,
+      V = colors.bright,
+      c = colors.bright,
       no = colors.red,
-      s = colors.orange,
-      S = colors.orange,
-      [' '] = colors.orange,
-      ic = colors.yellow,
-      R = colors.violet,
-      Rv = colors.violet,
+      s = colors.mid,
+      S = colors.mid,
+      [' '] = colors.mid,
+      ic = colors.mid,
+      R = colors.mid,
+      Rv = colors.mid,
       cv = colors.red,
       ce = colors.red,
-      r = colors.cyan,
-      rm = colors.cyan,
-      ['r?'] = colors.cyan,
+      r = colors.dim,
+      rm = colors.dim,
+      ['r?'] = colors.dim,
       ['!'] = colors.red,
       t = colors.red,
     }
@@ -129,7 +125,7 @@ ins_left {
 ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
+  color = { fg = colors.bright, gui = 'bold' },
 }
 
 ins_left { 'location' }
@@ -142,8 +138,8 @@ ins_left {
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
     error = { fg = colors.red },
-    warn = { fg = colors.yellow },
-    info = { fg = colors.cyan },
+    warn = { fg = colors.mid },
+    info = { fg = colors.dim },
   },
 }
 
@@ -181,20 +177,20 @@ ins_right {
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)
   cond = conditions.hide_in_width,
-  color = { fg = colors.green, gui = 'bold' },
+  color = { fg = colors.mid, gui = 'bold' },
 }
 
 ins_right {
   'fileformat',
   fmt = string.upper,
   icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-  color = { fg = colors.green, gui = 'bold' },
+  color = { fg = colors.mid, gui = 'bold' },
 }
 
 ins_right {
   'branch',
   icon = '',
-  color = { fg = colors.violet, gui = 'bold' },
+  color = { fg = colors.mid, gui = 'bold' },
 }
 
 ins_right {
@@ -202,8 +198,8 @@ ins_right {
   -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
   diff_color = {
-    added = { fg = colors.green },
-    modified = { fg = colors.orange },
+    added = { fg = colors.mid },
+    modified = { fg = colors.mid },
     removed = { fg = colors.red },
   },
   cond = conditions.hide_in_width,
@@ -213,7 +209,7 @@ ins_right {
   function()
     return '▊'
   end,
-  color = { fg = colors.blue },
+  color = { fg = colors.dim },
   padding = { left = 1 },
 }
 
